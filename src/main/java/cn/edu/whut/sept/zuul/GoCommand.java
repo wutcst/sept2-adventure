@@ -1,3 +1,11 @@
+/**
+ *
+ *处理go命令
+ *
+ * @author zhj
+ * @version 1.0
+ * */
+
 package cn.edu.whut.sept.zuul;
 
 public class GoCommand extends Command
