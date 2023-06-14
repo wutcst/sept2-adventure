@@ -38,6 +38,16 @@ public class Game
     {
         Room outside, theater, pub, lab, office;
 
+        // create the items
+        Item Sword=new Item("长剑","一般的文字冒险游戏可用不上这个...",3);
+        Item armor=new Item("铠甲","你无坚不摧啦！",4);
+        Item key=new Item("钥匙","一把钥匙，猜猜它能打开哪儿？",1);
+        Item stone=new Item("石头","这只是一块普通的石头",1);
+
+        // create the play
+        Player link=Player.getPlayer();
+
+
         // create the rooms
         outside = new Room("outside the main entrance of the university");
         theater = new Room("in a lecture theater");

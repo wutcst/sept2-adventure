@@ -17,12 +17,15 @@
 package cn.edu.whut.sept.zuul;
 
 import java.util.Set;
+import java.util.List;
 import java.util.HashMap;
 
 public class Room
 {
     private String description;     // 房间描述
     private HashMap<String, Room> exits;        // 出口信息.
+
+    private List<Item> items;       // 物件列表
 
     /**
      * 创建一个新房间
@@ -85,6 +88,24 @@ public class Room
     public Room getExit(String direction)
     {
         return exits.get(direction);
+    }
+
+    /**
+     * 向房间添加物件
+     *
+     * @param item 要添加的物件
+     */
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    /**
+     * 从房间移除物件
+     *
+     * @param item 要移除的物件
+     */
+    public void removeItem(Item item) {
+        items.remove(item);
     }
 }
 
