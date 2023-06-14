@@ -8,7 +8,17 @@
  * Game类的实例将创建并初始化所有其他类:它创建所有房间，并将它们连接成迷宫；它创建解析器
  * 接收用户输入，并将用户输入转换成命令后开始运行游戏。
  *
- * @author  Michael Kölling and David J. Barnes
+ * 拓展思路：
+ * 新建一个Player类
+ * 在Player类中添加方法来管理携带的物品，例如carryItem和dropItem，用于添加和丢弃物品。
+ * 在Player类中添加方法来获取玩家携带的所有物品和总重量。
+ * Game类中，添加一个Player对象来表示玩家。Player类可以包含姓名、当前所在房间和携带物品等属性。
+ *
+ * 在Game类的processCommand方法中，根据用户输入的命令调用相应的方法来处理take和drop命令。
+ * 在Game类的printHelp方法中，显示新添加的命令（例如take，drop和items）。
+ *
+ *
+ * @author  zhj
  * @version 1.0
  */
 package cn.edu.whut.sept.zuul;
@@ -33,6 +43,15 @@ public class Game
     private void createRooms()
     {
         Room outside, theater, pub, lab, office;
+
+        // create the items
+        Item Sword=new Item("长剑","一般的文字冒险游戏可用不上这个...",3);
+        Item armor=new Item("铠甲","你无坚不摧啦！",4);
+        Item key=new Item("钥匙","一把钥匙，猜猜它能打开哪儿？",1);
+        Item stone=new Item("石头","这只是一块普通的石头",1);
+
+        // create the play
+        Player link=Player.getPlayer();
 
         // 创建房间对象
         outside = new Room("outside the main entrance of the university");

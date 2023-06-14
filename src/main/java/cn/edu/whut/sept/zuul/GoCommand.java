@@ -1,7 +1,12 @@
 /**
- * @author  xs
+ *
+ *处理go命令
+ *
+ * @author zhj
  * @version 1.0
- */
+ * */
+
+
 package cn.edu.whut.sept.zuul;
 /**
  * 表示游戏中的“前进”命令
