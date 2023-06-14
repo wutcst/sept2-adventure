@@ -22,18 +22,24 @@
  * @version 1.0
  */
 package cn.edu.whut.sept.zuul;
-
+/**
+ * 表示游戏的主类
+ */
 public class Game
 {
-    private Parser parser;
-    private Room currentRoom;
-
+    private Parser parser;// 命令解析器
+    private Room currentRoom;// 当前所在房间
+    /**
+     * 创建游戏对象并初始化房间和解析器
+     */
     public Game()
     {
         createRooms();
         parser = new Parser();
     }
-
+    /**
+     * 创建游戏中的房间
+     */
     private void createRooms()
     {
         Room outside, theater, pub, lab, office;
@@ -47,15 +53,14 @@ public class Game
         // create the play
         Player link=Player.getPlayer();
 
-
-        // create the rooms
+        // 创建房间对象
         outside = new Room("outside the main entrance of the university");
         theater = new Room("in a lecture theater");
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
 
-        // initialise room exits
+        // 初始化房间的出口
         outside.setExit("east", theater);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
@@ -68,17 +73,19 @@ public class Game
         lab.setExit("east", office);
 
         office.setExit("west", lab);
-
+        // 设置初始房间
         currentRoom = outside;  // start game outside
     }
-
+    /**
+     * 游戏的主循环，不断读取用户输入并执行命令
+     */
     public void play()
     {
         printWelcome();
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-
+        // 游戏循环
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -91,7 +98,9 @@ public class Game
 
         System.out.println("Thank you for playing.  Good bye.");
     }
-
+    /**
+     * 打印欢迎信息
+     */
     private void printWelcome()
     {
         System.out.println();
@@ -105,7 +114,11 @@ public class Game
     public Room getCurrentRoom() {
         return currentRoom;
     }
-
+    /**
+     * 切换到指定房间
+     *
+     * @param room 指定房间
+     */
     public void setCurrentRoom(Room room){
         this.currentRoom = room;
     }
