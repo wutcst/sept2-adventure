@@ -2,21 +2,16 @@
  * 该类是“World-of-Zuul”应用程序的主类。
  * 《World of Zuul》是一款简单的文本冒险游戏。用户可以在一些房间组成的迷宫中探险。
  * 你们可以通过扩展该游戏的功能使它更有趣!.
- *
  * 如果想开始执行这个游戏，用户需要创建Game类的一个实例并调用“play”方法。
- *
  * Game类的实例将创建并初始化所有其他类:它创建所有房间，并将它们连接成迷宫；它创建解析器
  * 接收用户输入，并将用户输入转换成命令后开始运行游戏。
- *
  * 拓展思路：
  * 新建一个Player类
  * 在Player类中添加方法来管理携带的物品，例如carryItem和dropItem，用于添加和丢弃物品。
  * 在Player类中添加方法来获取玩家携带的所有物品和总重量。
  * Game类中，添加一个Player对象来表示玩家。Player类可以包含姓名、当前所在房间和携带物品等属性。
- *
  * 在Game类的processCommand方法中，根据用户输入的命令调用相应的方法来处理take和drop命令。
  * 在Game类的printHelp方法中，显示新添加的命令（例如take，drop和items）。
- *
  *
  * @author  zhj
  * @version 1.0
@@ -29,6 +24,8 @@ public class Game
 {
     private Parser parser;// 命令解析器
     private Room currentRoom;// 当前所在房间
+
+    private Player link; //游戏玩家
     /**
      * 创建游戏对象并初始化房间和解析器
      */
@@ -36,7 +33,18 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+//        link=Player.getPlayer();
+//        link.setCurrentRoom(outside);
     }
+
+    /**
+     * 获取玩家
+     * @return Player
+     */
+     public Player getPlayer()
+     {
+         return link;
+     }
     /**
      * 创建游戏中的房间
      */
@@ -50,8 +58,6 @@ public class Game
         Item key=new Item("钥匙","一把钥匙，猜猜它能打开哪儿？",1);
         Item stone=new Item("石头","这只是一块普通的石头",1);
 
-        // create the play
-        Player link=Player.getPlayer();
 
         // 创建房间对象
         outside = new Room("大学正门外");
@@ -90,6 +96,9 @@ public class Game
 
         // 设置初始房间
         currentRoom = outside;  // start game outside
+
+        link=Player.getPlayer();
+        link.setCurrentRoom(outside);
     }
     /**
      * 游戏的主循环，不断读取用户输入并执行命令

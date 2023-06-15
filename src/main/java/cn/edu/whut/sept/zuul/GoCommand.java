@@ -35,8 +35,15 @@ public class GoCommand extends Command
             System.out.println("这个方向没有房间!");
         }
         else {
-            game.setCurrentRoom(nextRoom);
-            System.out.println(nextRoom.getLongDescription());
+            if(game.getPlayer()!=null)
+            {
+                game.getPlayer().enterRoom(nextRoom);
+                System.out.println(nextRoom.getLongDescription());
+            }
+            else
+            {
+                System.out.println("玩家未初始化！");
+            }
         }
 
         return false;
