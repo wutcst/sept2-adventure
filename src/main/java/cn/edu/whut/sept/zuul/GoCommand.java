@@ -35,8 +35,15 @@ public class GoCommand extends Command
             System.out.println("There is no door!");
         }
         else {
-            game.setCurrentRoom(nextRoom);
-            System.out.println(nextRoom.getLongDescription());
+            if(game.getPlayer()!=null)
+            {
+                game.getPlayer().enterRoom(nextRoom);
+                System.out.println(nextRoom.getLongDescription());
+            }
+            else
+            {
+                System.out.println("玩家未初始化！");
+            }
         }
 
         return false;

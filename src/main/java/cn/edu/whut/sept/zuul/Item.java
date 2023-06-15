@@ -1,5 +1,8 @@
 /**
  * 表示游戏中的物品类
+ *
+ * @author zhj
+ * @version 1.1
  */
 
 package cn.edu.whut.sept.zuul;

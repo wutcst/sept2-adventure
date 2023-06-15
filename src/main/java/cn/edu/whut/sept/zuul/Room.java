@@ -1,13 +1,11 @@
 /**
  *房间类维护了房间描述字段以及房间出口信息
  *该类提供了访问、修改这两个字段的接口
- *
  * 拓展思路：
  * 为Room类添加一个items字段，用于存储房间内的物品。每个物品可以定义为一个Item类，其中包括描述和重量属性。
  * 在Room类中添加方法来管理物品，例如addItem和removeItem，用于在房间中添加和移除物品。
  * 在Room类中添加方法来获取房间内的所有物品和总重量。
  * 在Room类中添加方法来生成房间的详细描述时包括物品信息。
- *
  * Room类中随机生成一个魔法饼干物品，并在Game类的processCommand方法中处理eat cookie命令，增加玩家的负重能力。
  *
  * @author zhj
@@ -106,6 +104,10 @@ public class Room
      */
     public void removeItem(Item item) {
         items.remove(item);
+    }
+
+    public List<Item> getItems(){
+        return items;
     }
 }
 
