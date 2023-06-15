@@ -18,7 +18,7 @@ public class QuitCommand extends Command
     public boolean execute(Game game)
     {
         if(hasSecondWord()) {
-            System.out.println("Quit what?");
+            System.out.println("退出什么？");
             return false;
         }
         else {

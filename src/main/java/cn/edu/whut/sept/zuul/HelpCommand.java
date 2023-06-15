@@ -30,10 +30,10 @@ public class HelpCommand extends Command
      */
     public boolean execute(Game game)
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("你迷路了，你独自一人，你在徘徊");
+        System.out.println("在大学周围。");
         System.out.println();
-        System.out.println("Your command words are:");
+        System.out.println("你的命令词是：");
         commandWords.showAll();
         return false;
     }
