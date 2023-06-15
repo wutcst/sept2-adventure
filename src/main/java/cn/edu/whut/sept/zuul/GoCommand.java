@@ -23,7 +23,7 @@ public class GoCommand extends Command
     public boolean execute(Game game)
     {
         if(!hasSecondWord()) {
-            System.out.println("Go where?");
+            System.out.println("去哪?");
         }
 
         String direction = getSecondWord();
@@ -32,7 +32,7 @@ public class GoCommand extends Command
         Room nextRoom = game.getCurrentRoom().getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("这个方向没有房间!");
         }
         else {
             game.setCurrentRoom(nextRoom);

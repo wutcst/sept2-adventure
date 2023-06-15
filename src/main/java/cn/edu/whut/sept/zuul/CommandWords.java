@@ -25,6 +25,7 @@ public class CommandWords
         commands.put("go", new GoCommand());
         commands.put("help", new HelpCommand(this));
         commands.put("quit", new QuitCommand());
+        commands.put("look", new  LookCommnd());
     }
     /**
      * 获取指定命令词汇对应的命令对象

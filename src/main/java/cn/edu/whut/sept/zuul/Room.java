@@ -16,6 +16,7 @@
 
 package cn.edu.whut.sept.zuul;
 
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.List;
 import java.util.HashMap;
@@ -36,6 +37,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        items = new ArrayList<>();
     }
 
     /**
@@ -66,12 +68,12 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "你正在" + description + ".\n" + getExitString();
     }
 
     private String getExitString()
     {
-        String returnString = "Exits:";
+        String returnString = "出口:";
         Set<String> keys = exits.keySet();
         for(String exit : keys) {
             returnString += " " + exit;
@@ -106,6 +108,16 @@ public class Room
      */
     public void removeItem(Item item) {
         items.remove(item);
+    }
+
+    // 获取房间内的物品列表
+    public List<Item> getItems() {
+        return items;
+    }
+
+    // 获取房间描述
+    public String getDescription() {
+        return description;
     }
 }
 
