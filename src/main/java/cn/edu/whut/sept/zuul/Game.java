@@ -60,11 +60,11 @@ public class Game
 
 
         // 创建房间对象
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        outside = new Room("大学正门外");
+        theater = new Room("在演讲厅");
+        pub = new Room("在校园酒吧");
+        lab = new Room("在计算实验室");
+        office = new Room("在计算管理办公室");
 
         // 初始化房间的出口
         outside.setExit("east", theater);
@@ -79,6 +79,21 @@ public class Game
         lab.setExit("east", office);
 
         office.setExit("west", lab);
+
+        //初始化房间的物品
+        outside.addItem(Sword);
+        outside.addItem(key);
+
+        theater.addItem(armor);
+        theater.addItem(key);
+
+        pub.addItem(stone);
+
+        lab.addItem(armor);
+
+        office.addItem(Sword);
+        office.addItem(stone);
+
         // 设置初始房间
         currentRoom = outside;  // start game outside
 
@@ -99,13 +114,13 @@ public class Game
         while (! finished) {
             Command command = parser.getCommand();
             if(command == null) {
-                System.out.println("I don't understand...");
+                System.out.println("我不理解...");
             } else {
                 finished = command.execute(this);
             }
         }
 
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("感谢游玩，再见！");
     }
     /**
      * 打印欢迎信息
@@ -113,9 +128,9 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.");
+        System.out.println("欢迎来到 World of Zuul!");
+        System.out.println("World of Zuul 是一款全新的、令人难以置信的无聊冒险游戏。");
+        System.out.println("如果需要帮助，请键入“help”。");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
