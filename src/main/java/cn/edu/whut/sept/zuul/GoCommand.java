@@ -38,7 +38,8 @@ public class GoCommand extends Command
             if(game.getPlayer()!=null)
             {
                 game.getPlayer().enterRoom(nextRoom);
-                System.out.println(nextRoom.getLongDescription());
+                game.setCurrentRoom(nextRoom);
+                System.out.println(nextRoom.getDescription());
             }
             else
             {

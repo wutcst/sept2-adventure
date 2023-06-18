@@ -94,7 +94,7 @@ public class Player {
         }
         else{
             currentRoom = roomStack.pop();
-            System.out.println(currentRoom.getLongDescription());
+            System.out.println(currentRoom.getDescription());
         }
         return false;
     }
