@@ -132,7 +132,7 @@ public class Game
         System.out.println("World of Zuul 是一款全新的、令人难以置信的无聊冒险游戏。");
         System.out.println("如果需要帮助，请键入“help”。");
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(currentRoom.getDescription());
     }
 
     public Room getCurrentRoom() {

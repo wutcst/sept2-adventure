@@ -54,17 +54,7 @@ public class Room
      *
      * @return 房间的描述
      */
-    public String getShortDescription()
-    {
-        return description;
-    }
-
-    /**
-     * 获取详细的房间的描述
-     *
-     * @return 房间的描述
-     */
-    public String getLongDescription()
+    public String getDescription()
     {
         return "你正在" + description + ".\n" + getExitString();
     }
@@ -109,15 +99,15 @@ public class Room
     }
 
 
-    // 获取房间内的物品列表
+    /**
+     * 获取房间的物品列表
+     *
+     * @return items 返回物品列表
+     */
     public List<Item> getItems() {
         return items;
     }
 
-    // 获取房间描述
-    public String getDescription() {
-        return description;
-    }
 
 }
 
