@@ -23,8 +23,8 @@ public class Room
 {
     private String description;     // 房间描述
     private HashMap<String, Room> exits;        // 出口信息.
-
     private List<Item> items;       // 物件列表
+    private HashMap<String, Monster> monsters;     // 怪物列表
 
     /**
      * 创建一个新房间
@@ -36,6 +36,7 @@ public class Room
         this.description = description;
         exits = new HashMap<>();
         items = new ArrayList<>();
+        monsters = new HashMap<>();
     }
 
     /**
@@ -107,6 +108,39 @@ public class Room
     public List<Item> getItems() {
         return items;
     }
+
+    /**
+     * 房间内添加怪物，并设置怪物位置
+     *
+     * @param direction 怪物所在位置
+     * @param monster  怪物
+     */
+    public void addMonster(String direction, Monster monster)
+    {
+        monsters.put(direction, monster);
+    }
+
+    /**
+     * 房间内移除怪物
+     *
+     * @param direction 怪物所在位置
+     * @param monster  怪物
+     */
+    public void removeMonster(String direction, Monster monster)
+    {
+        monsters.remove(direction,monster);
+    }
+
+    /**
+     * 获取房间的怪物列表
+     *
+     * @return monsters 返回怪物列表
+     */
+    public HashMap<String, Monster> getMonsters() {
+        return monsters;
+    }
+
+
 
 
 }

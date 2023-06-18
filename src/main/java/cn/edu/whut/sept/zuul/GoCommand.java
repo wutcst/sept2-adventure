@@ -8,9 +8,8 @@
 
 
 package cn.edu.whut.sept.zuul;
-/**
- * 表示游戏中的“前进”命令
- */
+
+import java.util.HashMap;
 public class GoCommand extends Command
 {
     /**
@@ -27,9 +26,10 @@ public class GoCommand extends Command
         }
 
         String direction = getSecondWord();
-        Room currentRoom = game.getCurrentRoom();
+        Room currentRoom = game.getPlayer().getCurrentRoom();
 
-        Room nextRoom = game.getCurrentRoom().getExit(direction);
+
+        Room nextRoom = game.getPlayer().getCurrentRoom().getExit(direction);
 
         if (nextRoom == null) {
             System.out.println("这个方向没有房间!");
@@ -37,8 +37,18 @@ public class GoCommand extends Command
         else {
             if(game.getPlayer()!=null)
             {
+                HashMap<String, Monster> monsters=currentRoom.getMonsters();
+                if(monsters.get(direction)!=null){
+                    boolean flag=game.getPlayer().fight(monsters.get(direction));
+                    if(!flag){
+                        game.setFail();
+                        System.out.println("你被怪物击败，濒临死亡！");
+                        return false;
+                    }
+                    System.out.println("你获得了胜利！");
+                    System.out.println();
+                }
                 game.getPlayer().enterRoom(nextRoom);
-                game.setCurrentRoom(nextRoom);
                 System.out.println(nextRoom.getDescription());
             }
             else

@@ -15,7 +15,7 @@ public class HelpCommand extends Command
     /**
      * 创建“帮助”命令对象
      *
-     * @param commandWords 命令词汇表对象
+     * @param words 命令词汇表对象
      */
     public HelpCommand(CommandWords words)
     {
