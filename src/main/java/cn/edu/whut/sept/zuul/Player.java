@@ -13,6 +13,9 @@ import java.util.List;
 public class Player {
     private static Player player; // 单例实例
     private String name; // 玩家姓名
+    private int health;  // 血量
+    private int attack;  // 攻击力
+    private int defense; // 防御力
     private Room currentRoom; // 玩家当前所在的房间
     private Stack<Room> roomStack;  // 玩家经过的房间
     private int carryingCapacity; // 玩家负重能力
@@ -28,6 +31,9 @@ public class Player {
         if (player == null) {
             player = new Player();
             player.setName("link");
+            player.health=10;
+            player.attack=2;
+            player.defense=0;
             player.setCarryingCapacity(10);
             player.setCurrentLoad(0);
             player.roomStack = new Stack<>();
@@ -146,6 +152,12 @@ public class Player {
     public void addItem(Item item) {
         inventory.add(item);
         currentLoad += item.getWeight();
+        if(item.getName().equals("长剑")){
+            this.attack+=3;
+        }
+        else if(item.getName().equals("铠甲")){
+            this.defense+=3;
+        }
     }
 
     /**
@@ -155,5 +167,62 @@ public class Player {
     public void removeItem(Item item) {
         inventory.remove(item);
         currentLoad -= item.getWeight();
+        if(item.getName().equals("长剑")){
+            this.attack-=3;
+        }
+        else if(item.getName().equals("铠甲")){
+            this.defense-=3;
+        }
     }
+
+    /**
+     * 玩家与怪物交战逻辑判断
+     * @return 玩家血量
+     */
+    public boolean fight(Monster monster){
+        System.out.println("你与怪物发生了交战！！！");
+        display();
+        monster.display();
+        while(player.health>0 && monster.getHealth()>0){
+            player.health-= monster.getAttack()-player.defense;
+            monster.setHealth(getHealth()-player.attack+ monster.getDefense());
+            player.displayHealth();
+            monster.displayHealth();
+            System.out.println();
+        }
+        return player.health>0;
+    }
+
+    /**
+     * 获取玩家血量
+     * @return 玩家血量
+     */
+    public int getHealth() {
+        return health;
+    }
+
+    /**
+     * 获取玩家攻击力
+     * @return 玩家攻击力
+     */
+    public int getAttack() {
+        return attack;
+    }
+
+    /**
+     * 获取玩家防御力
+     * @return 玩家防御力
+     */
+    public int getDefense() {
+        return defense;
+    }
+
+    public void display(){
+        System.out.println("link属性——当前血量："+this.health+" 攻击力："+this.attack+" 防御力："+this.defense);
+    }
+
+    public void displayHealth(){
+        System.out.print("link-当前血量："+health+"         ");
+    }
+
 }

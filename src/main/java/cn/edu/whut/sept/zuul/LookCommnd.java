@@ -4,7 +4,7 @@ import java.util.List;
 
 public class LookCommnd extends Command {
         public boolean execute(Game game) {
-            Room currentRoom = game.getCurrentRoom();
+            Room currentRoom = game.getPlayer().getCurrentRoom();
 
             // 显示当前房间的描述
             System.out.println(currentRoom.getDescription());

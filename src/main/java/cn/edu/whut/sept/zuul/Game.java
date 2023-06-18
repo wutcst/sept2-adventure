@@ -23,18 +23,18 @@ package cn.edu.whut.sept.zuul;
 public class Game
 {
     private Parser parser;// 命令解析器
-    private Room currentRoom;// 当前所在房间
-
     private Player link; //游戏玩家
+    private boolean isWin;//游戏胜利标识符
+    private boolean isFail;//游戏失败标识符
     /**
      * 创建游戏对象并初始化房间和解析器
      */
     public Game()
     {
-        createRooms();
+        createGame();
         parser = new Parser();
-//        link=Player.getPlayer();
-//        link.setCurrentRoom(outside);
+        isWin=false;
+        isFail=false;
     }
 
     /**
@@ -48,11 +48,16 @@ public class Game
     /**
      * 创建游戏中的房间
      */
-    private void createRooms()
+    private void createGame()
     {
-        Room outside, theater, pub, lab, office;
+        Room outside, theater, pub, lab, office,exit;
 
-        // create the items
+        // 创建怪物
+        Monster monsterCommonA=new Monster(6,3,0);
+        Monster monsterCommonB=new Monster(6,3,0);
+        Monster monsterBOOS=new Monster(20,5,0);
+
+        // 创建物品
         Item Sword=new Item("长剑","一般的文字冒险游戏可用不上这个...",3);
         Item armor=new Item("铠甲","你无坚不摧啦！",4);
         Item key=new Item("钥匙","一把钥匙，猜猜它能打开哪儿？",1);
@@ -65,6 +70,7 @@ public class Game
         pub = new Room("在校园酒吧");
         lab = new Room("在计算实验室");
         office = new Room("在计算管理办公室");
+        exit=new Room("在一个有传送门的房间！");
 
         // 初始化房间的出口
         outside.setExit("east", theater);
@@ -79,6 +85,7 @@ public class Game
         lab.setExit("east", office);
 
         office.setExit("west", lab);
+        office.setExit("east",exit);
 
         //初始化房间的物品
         outside.addItem(Sword);
@@ -94,10 +101,15 @@ public class Game
         office.addItem(Sword);
         office.addItem(stone);
 
-        // 设置初始房间
-        currentRoom = outside;  // start game outside
+        //初始化怪物位置
+        outside.addMonster("west",monsterCommonA);
+        lab.addMonster("east",monsterCommonB);
+        office.addMonster("east",monsterBOOS);
 
+        // 创建玩家
         link=Player.getPlayer();
+
+        //设置初始房间
         link.setCurrentRoom(outside);
     }
     /**
@@ -118,6 +130,12 @@ public class Game
             } else {
                 finished = command.execute(this);
             }
+            if(isWin){
+
+            }
+            if(isFail){
+                System.out.println("游戏失败！");
+            }
         }
 
         System.out.println("感谢游玩，再见！");
@@ -132,18 +150,23 @@ public class Game
         System.out.println("World of Zuul 是一款全新的、令人难以置信的无聊冒险游戏。");
         System.out.println("如果需要帮助，请键入“help”。");
         System.out.println();
-        System.out.println(currentRoom.getDescription());
+        System.out.println(getPlayer().getCurrentRoom().getDescription());
     }
 
-    public Room getCurrentRoom() {
-        return currentRoom;
-    }
     /**
-     * 切换到指定房间
+     * 设置游戏胜利
      *
-     * @param room 指定房间
      */
-    public void setCurrentRoom(Room room){
-        this.currentRoom = room;
+    public void setWin(){
+        this.isWin = true;
     }
+
+    /**
+     * 设置游戏失败
+     *
+     */
+    public void setFail(){
+        this.isFail = true;
+    }
+
 }

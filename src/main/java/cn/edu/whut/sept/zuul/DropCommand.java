@@ -7,7 +7,7 @@ public class DropCommand extends Command {
     public boolean execute(Game game) {
         if (game.getPlayer() != null) {
             Player player = game.getPlayer();
-            Room currentRoom = game.getCurrentRoom();
+            Room currentRoom = player.getCurrentRoom();
 
             if (!hasSecondWord()) {
                 System.out.println("丢弃什么物品？");
