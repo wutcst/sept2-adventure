@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class LookCommnd extends Command {
+public class LookCommand extends Command {
         public boolean execute(Game game) {
             Room currentRoom = game.getPlayer().getCurrentRoom();
 
@@ -38,6 +38,20 @@ public class LookCommnd extends Command {
 
             System.out.println("");
             game.getPlayer().display();
+
+            System.out.println("");
+            //显示怪物信息
+            HashMap<String, Monster> monsters=currentRoom.getMonsters();
+            if (monsters.isEmpty()) {
+                System.out.println("房间里没有怪物。");
+            } else {
+                for (Map.Entry<String, Monster> entry : monsters.entrySet()) {
+                    String direction=entry.getKey();
+                    Monster monster=entry.getValue();
+                    System.out.println("小心了！房间"+direction+"方向有只"+monster.getName()+"正对你虎视眈眈！");
+                    monster.display();
+                }
+            }
 
             return false;
     }
