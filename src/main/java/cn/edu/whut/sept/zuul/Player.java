@@ -7,7 +7,6 @@
 package cn.edu.whut.sept.zuul;
 import java.util.ArrayList;
 import java.util.Stack;
-
 import java.util.List;
 
 public class Player {
@@ -200,7 +199,6 @@ public class Player {
     public int getHealth() {
         return health;
     }
-
     /**
      * 获取玩家攻击力
      * @return 玩家攻击力
