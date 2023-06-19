@@ -17,6 +17,9 @@
  * @version 1.0
  */
 package cn.edu.whut.sept.zuul;
+
+import java.util.ArrayList;
+
 /**
  * 表示游戏的主类
  */
@@ -26,11 +29,13 @@ public class Game
     private Player link; //游戏玩家
     private boolean isWin;//游戏胜利标识符
     private boolean isFail;//游戏失败标识符
+    private ArrayList<Room> rooms; // 房间列表,主要用于随机传送功能
     /**
      * 创建游戏对象并初始化房间和解析器
      */
     public Game()
     {
+        rooms = new ArrayList<>();
         createGame();
         parser = new Parser();
         isWin=false;
@@ -50,7 +55,7 @@ public class Game
      */
     private void createGame()
     {
-        Room outside, theater, pub, lab, office,exit;
+        Room outside, theater, pub, lab, office,exit,teleport;
 
         // 创建怪物
         Monster monsterCommonA=new Monster("普通怪物",6,3,0);
@@ -66,11 +71,20 @@ public class Game
 
         // 创建房间对象
         outside = new Room("大学正门外");
-        theater = new Room("在演讲厅");
-        pub = new Room("在校园酒吧");
-        lab = new Room("在计算实验室");
-        office = new Room("在计算管理办公室");
-        exit=new Room("在一个有传送门的房间！");
+        theater = new Room("演讲厅");
+        pub = new Room("校园酒吧");
+        lab = new Room("计算实验室");
+        office = new Room("计算管理办公室");
+        exit=new Room("一个有传送门的房间！");
+        teleport=new Room("一个随机传送房间");
+
+        teleport.setTeleportRooms(true);
+
+        rooms.add(outside);
+        rooms.add(theater);
+        rooms.add(pub);
+        rooms.add(lab);
+        rooms.add(office);
 
         // 初始化房间的出口
         outside.setExit("east", theater);
@@ -86,6 +100,8 @@ public class Game
 
         office.setExit("west", lab);
         office.setExit("east",exit);
+
+
 
         //初始化房间的物品
         outside.addItem(Sword);
@@ -168,5 +184,11 @@ public class Game
     public void setFail(){
         this.isFail = true;
     }
-
+    /**
+     * 获取房间列表
+     * @return rooms
+     */
+    public ArrayList<Room> getRooms(){
+        return rooms;
+    }
 }

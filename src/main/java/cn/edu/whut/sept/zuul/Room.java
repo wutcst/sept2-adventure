@@ -25,6 +25,7 @@ public class Room
     private HashMap<String, Room> exits;        // 出口信息.
     private List<Item> items;       // 物件列表
     private HashMap<String, Monster> monsters;     // 怪物列表
+    private boolean isTeleportRooms;    //是否为随机传送房间标识符
 
     /**
      * 创建一个新房间
@@ -145,6 +146,26 @@ public class Room
      */
     public HashMap<String, Monster> getMonsters() {
         return monsters;
+    }
+    /**
+     * 设置房间是否为随机传送房间
+     *
+     * @param isTeleportRooms 随机传送标识
+     */
+    public void setTeleportRooms(boolean isTeleportRooms)
+    {
+        this.isTeleportRooms = isTeleportRooms;
+        System.out.println("设置成功！");
+    }
+
+    /**
+     * 获取房间的随机传送标识符
+     *
+     * @return  isTeleportRooms 随机传送标识
+     */
+    public boolean getTeleportRooms()
+    {
+        return isTeleportRooms;
     }
 
 }
