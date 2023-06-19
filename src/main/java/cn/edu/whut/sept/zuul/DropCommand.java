@@ -16,6 +16,7 @@ public class DropCommand extends Command {
             }
 
             String itemToDrop = getSecondWord();
+
             List<Item> playerItems = player.getItems();
 
             if(itemToDrop.equals("all")){
