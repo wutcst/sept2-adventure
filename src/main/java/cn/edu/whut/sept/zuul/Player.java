@@ -19,7 +19,7 @@ public class Player {
     private Stack<Room> roomStack;  // 玩家经过的房间
     private int carryingCapacity; // 玩家负重能力
     private int currentLoad; // 玩家当前负重
-    private List<Item> inventory; // 玩家携带的物品列表
+    private List<Item> items; // 玩家携带的物品列表
 
     /**
      * 获取Player类的单例实例
@@ -36,7 +36,7 @@ public class Player {
             player.setCarryingCapacity(10);
             player.setCurrentLoad(0);
             player.roomStack = new Stack<>();
-            player.inventory = new ArrayList<>();
+            player.items = new ArrayList<>();
 
         }
         return player;
@@ -140,8 +140,8 @@ public class Player {
      * 获取玩家携带的物品列表
      * @return 玩家携带的物品列表
      */
-    public List<Item> getInventory() {
-        return inventory;
+    public List<Item> getPlayerItems() {
+        return items;
     }
 
     /**
@@ -149,7 +149,7 @@ public class Player {
      * @param item 要添加的物品
      */
     public void addItem(Item item) {
-        inventory.add(item);
+        items.add(item);
         currentLoad += item.getWeight();
         if(item.getName().equals("长剑")){
             this.attack+=3;
@@ -164,7 +164,7 @@ public class Player {
      * @param item 要移除的物品
      */
     public void removeItem(Item item) {
-        inventory.remove(item);
+        items.remove(item);
         currentLoad -= item.getWeight();
         if(item.getName().equals("长剑")){
             this.attack-=3;
@@ -223,4 +223,33 @@ public class Player {
         System.out.print("link-当前血量："+health+"         ");
     }
 
+    /**
+     * 获取玩家的物品列表
+     *
+     * @return items 返回物品列表
+     */
+    public List<Item> getItems() {return items;}
+
+    /**
+     * 玩家食用物品
+     *
+     * @param  item 要食用的物品
+     */
+    public void eatItem(Item item) {
+        if (item.getcanEat()) {
+            items.remove(item);
+            currentLoad -= item.getWeight();
+            System.out.println("你吃掉了 " + item.getName() + ".");
+            if(item.getName().equals("魔法饼干")){
+                this.carryingCapacity+=1;
+            }
+            if(item.getName().equals("苹果")){
+                this.health=this.health+5>10?10:this.health+5;     //生命上限为10
+            }
+        } else {
+            System.out.println("你无法食用 " + item.getName() + ".");
+        }
+    }
+
 }
+

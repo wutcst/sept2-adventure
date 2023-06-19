@@ -1,6 +1,8 @@
 package cn.edu.whut.sept.zuul;
 
 public class Monster {
+
+    private String name; // 怪物名称
     private int health;  // 血量
     private int attack;  // 攻击力
     private int defense; // 防御力
@@ -11,10 +13,27 @@ public class Monster {
      * @param attack    怪物攻击力
      * @param defense   怪物防御力
      */
-    public Monster(int health,int attack,int defense) {
+    public Monster(String name,int health,int attack,int defense) {
+        this.name=name;
         this.health = health;
         this.attack = attack;
         this.defense = defense;
+    }
+
+    /**
+     * 设置怪物名称
+     * @param name 怪物名称
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * 获取怪物名称
+     * @return name 怪物名称
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -50,14 +69,14 @@ public class Monster {
     }
 
     public void display(){
-        System.out.println("怪物属性——当前血量："+this.health+" 攻击力："+this.attack+" 防御力："+this.defense);
+        System.out.println(this.name+"——当前血量："+this.health+" 攻击力："+this.attack+" 防御力："+this.defense);
     }
 
     public void displayHealth(){
         if(this.health<0){
             this.health=0;
         }
-        System.out.print("普通怪物-当前血量："+health);
+        System.out.print(this.name+"-当前血量："+health);
     }
 
 }

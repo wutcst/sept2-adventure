@@ -30,6 +30,7 @@ public class CommandWords
         commands.put("take", new TakeCommand());
         commands.put("drop", new DropCommand());
         commands.put("items", new ItemsCommand());
+        commands.put("eat", new EatCommand());
 
     }
     /**

@@ -17,7 +17,8 @@ public class TakeCommand extends Command {
             }
 
             String itemToTake = getSecondWord();
-            List<Item> roomItems = currentRoom.getItems();
+
+            List<Item> roomItems = currentRoom.getRoomItems();
 
             if(itemToTake.equals("all")){
                 if (roomItems.isEmpty()) {

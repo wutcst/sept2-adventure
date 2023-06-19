@@ -11,13 +11,14 @@ public class ItemsCommand extends Command {
 
         // 打印当前房间内的物品及总重量
         System.out.println("当前房间拥有物品:");
-        printItems(currentRoom.getItems());
-        System.out.println("物品总重量为: " + getTotalWeight(currentRoom.getItems()));
+
+        printItems(currentRoom.getRoomItems());
+        System.out.println("物品总重量为: " + getTotalWeight(currentRoom.getRoomItems()));
 
         // 打印玩家随身携带的物品及总重量
         System.out.println("玩家携带物品:");
-        printItems(player.getInventory());
-        System.out.println("总重量为： " + getTotalWeight(player.getInventory()));
+        printItems(player.getItems());
+        System.out.println("总重量为： " + getTotalWeight(player.getItems()));
 
         return false;
     }
