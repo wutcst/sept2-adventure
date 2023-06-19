@@ -185,6 +185,8 @@ public class Game
      * 设置游戏失败
      *
      */
+
+
     public void setFail(){
         this.isFail = true;
     }
