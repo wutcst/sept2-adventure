@@ -98,27 +98,32 @@ public class Game
 
         lab.setExit("north", outside);
         lab.setExit("east", office);
+        lab.setExit("west", teleport);
 
         office.setExit("west", lab);
         office.setExit("east",exit);
 
 
+        teleport.setExit("east",lab);
 
         //初始化房间的物品
-        outside.addItem(Sword);
-        outside.addItem(key);
+        //outside.addItem(Sword);
+        //outside.addItem(key);
         outside.addItem(apple);
         outside.addItem(magicCookie);
-        outside.addItem(armor);
+        //outside.addItem(armor);
+        outside.addItem(stone);
 
-        theater.addItem(armor);
-        theater.addItem(key);
+        theater.addItem(Sword);
+        //theater.addItem(key);
 
         pub.addItem(stone);
+        pub.addItem(armor);
+        pub.addItem(magicCookie);
 
-        lab.addItem(armor);
+        lab.addItem(apple);
 
-        office.addItem(Sword);
+        office.addItem(apple);
         office.addItem(stone);
 
         //初始化怪物位置
@@ -174,8 +179,22 @@ public class Game
     }
 
     /**
+     * 获取当前游戏胜利标识
+     * @return isWin 游戏胜利标识
+     */
+    public boolean getIsWin(){
+        return this.isWin;
+    }
+
+    /**
+     * 获取当前游戏失败标识
+     * @return isFail 游戏失败标识
+     */
+    public boolean getIsFail(){
+        return this.isFail;
+    }
+    /**
      * 设置游戏胜利
-     *
      */
     public void setWin(){
         this.isWin = true;
@@ -183,13 +202,13 @@ public class Game
 
     /**
      * 设置游戏失败
-     *
      */
 
 
     public void setFail(){
         this.isFail = true;
     }
+
     /**
      * 获取房间列表
      * @return rooms
@@ -197,4 +216,14 @@ public class Game
     public ArrayList<Room> getRooms(){
         return rooms;
     }
+
+    public boolean getWin() {
+        return isWin;
+    }
+
+    public boolean getFail() {
+        return isFail;
+    }
+
+
 }

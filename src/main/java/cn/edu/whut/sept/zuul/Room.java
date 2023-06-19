@@ -41,6 +41,7 @@ public class Room
         exits = new HashMap<>();
         items = new ArrayList<>();
         monsters = new HashMap<>();
+        isTeleportRooms=false;
     }
 
     /**
@@ -64,6 +65,11 @@ public class Room
         return "你正在" + description + ".\n" + getExitString();
     }
 
+    /**
+     * 获取房间的出口
+     *
+     * @return 房间的出口
+     */
     private String getExitString()
     {
         String returnString = "出口:";
@@ -112,14 +118,6 @@ public class Room
 
     public List<Item> getRoomItems() {return items;}
 
-    public int getItemsWeight() {
-        int weight=0;
-        for (Item item : items) {
-            weight+=item.getWeight();
-        }
-        return weight;
-    }
-
     /**
      * 房间内添加怪物，并设置怪物位置
      *
@@ -150,6 +148,27 @@ public class Room
     public HashMap<String, Monster> getMonsters() {
         return monsters;
     }
+    /**
+     * 设置房间是否为随机传送房间
+     *
+     * @param isTeleportRooms 随机传送标识
+     */
+    public void setTeleportRooms(boolean isTeleportRooms)
+    {
+        this.isTeleportRooms = isTeleportRooms;
+        System.out.println("设置成功！");
+    }
+
+    /**
+     * 获取房间的随机传送标识符
+     *
+     * @return  isTeleportRooms 随机传送标识
+     */
+    public boolean getTeleportRooms()
+    {
+        return isTeleportRooms;
+    }
+
     /**
      * 设置房间是否为随机传送房间
      *
