@@ -65,8 +65,6 @@ public class Game
         Item apple=new Item("苹果","这苹果看上去味道不错。",1,true);
         Item magicCookie=new Item("魔法饼干","这块饼干似乎能改善你的体质。",1,true);
 
-
-
         // 创建房间对象
         outside = new Room("大学正门外");
         theater = new Room("在演讲厅");
@@ -95,6 +93,7 @@ public class Game
         outside.addItem(key);
         outside.addItem(apple);
         outside.addItem(magicCookie);
+        outside.addItem(armor);
 
         theater.addItem(armor);
         theater.addItem(key);

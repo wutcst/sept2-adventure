@@ -184,7 +184,7 @@ public class Player {
         monster.display();
         while(player.health>0 && monster.getHealth()>0){
             player.health-= monster.getAttack()-player.defense;
-            monster.setHealth(getHealth()-player.attack+ monster.getDefense());
+            monster.setHealth(monster.getHealth()-player.attack+ monster.getDefense());
             player.displayHealth();
             monster.displayHealth();
             System.out.println();
