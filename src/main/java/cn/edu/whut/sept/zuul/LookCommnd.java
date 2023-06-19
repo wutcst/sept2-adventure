@@ -19,7 +19,7 @@ public class LookCommnd extends Command {
             } else {
                 System.out.println("房间里的物品有:");
                 for (Item item : items) {
-                    System.out.println(item.getName() + "- " + item.getDescription() + "，重量：" + item.getWeight());
+                    System.out.println(item.getName() + "- " + item.getDescription() + "  重量：" + item.getWeight());
                 }
             }
             System.out.println("");
@@ -35,6 +35,9 @@ public class LookCommnd extends Command {
                     monster.display();
                 }
             }
+
+            System.out.println("");
+            game.getPlayer().display();
 
             return false;
     }

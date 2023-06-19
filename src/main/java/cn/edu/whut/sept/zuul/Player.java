@@ -184,7 +184,7 @@ public class Player {
         monster.display();
         while(player.health>0 && monster.getHealth()>0){
             player.health-= monster.getAttack()-player.defense;
-            monster.setHealth(getHealth()-player.attack+ monster.getDefense());
+            monster.setHealth(monster.getHealth()-player.attack+ monster.getDefense());
             player.displayHealth();
             monster.displayHealth();
             System.out.println();
@@ -223,6 +223,9 @@ public class Player {
         System.out.print("link-当前血量："+health+"         ");
     }
 
+    public void displayLoad(){
+        System.out.println("link——当前负重上限："+carryingCapacity);
+    }
     /**
      * 获取玩家的物品列表
      *
@@ -242,9 +245,11 @@ public class Player {
             System.out.println("你吃掉了 " + item.getName() + ".");
             if(item.getName().equals("魔法饼干")){
                 this.carryingCapacity+=1;
+                System.out.println("你的负重上限+1 ！");
             }
             if(item.getName().equals("苹果")){
                 this.health=this.health+5>10?10:this.health+5;     //生命上限为10
+                System.out.println("你的血量+5 ！");
             }
         } else {
             System.out.println("你无法食用 " + item.getName() + ".");

@@ -43,10 +43,15 @@ public class GoCommand extends Command
                     if(!flag){
                         game.setFail();
                         System.out.println("你被怪物击败，濒临死亡！");
-                        return false;
+                        return true;
                     }
                     System.out.println("你获得了胜利！");
                     System.out.println();
+                }
+                if(nextRoom.getDescription().equals("在一个有传送门的房间！")){
+                    game.setWin();
+                    System.out.println("你找到了传送门，逃离了这个混乱的区域");
+                    return true;
                 }
                 game.getPlayer().enterRoom(nextRoom);
                 System.out.println(nextRoom.getDescription());

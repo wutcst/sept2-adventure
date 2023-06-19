@@ -61,8 +61,9 @@ public class Game
         Item Sword=new Item("长剑","一般的文字冒险游戏可用不上这个...",3,false);
         Item armor=new Item("铠甲","你无坚不摧啦！",4,false);
         Item key=new Item("钥匙","一把钥匙，猜猜它能打开哪儿？",1,false);
-        Item stone=new Item("石头","这只是一块普通的石头",1,false);
-
+        Item stone=new Item("石头","这只是一块普通的石头。",1,false);
+        Item apple=new Item("苹果","这苹果看上去味道不错。",1,true);
+        Item magicCookie=new Item("魔法饼干","这块饼干似乎能改善你的体质。",1,true);
 
         // 创建房间对象
         outside = new Room("大学正门外");
@@ -90,6 +91,9 @@ public class Game
         //初始化房间的物品
         outside.addItem(Sword);
         outside.addItem(key);
+        outside.addItem(apple);
+        outside.addItem(magicCookie);
+        outside.addItem(armor);
 
         theater.addItem(armor);
         theater.addItem(key);
@@ -131,7 +135,7 @@ public class Game
                 finished = command.execute(this);
             }
             if(isWin){
-
+                System.out.println("游戏胜利！");
             }
             if(isFail){
                 System.out.println("游戏失败！");
