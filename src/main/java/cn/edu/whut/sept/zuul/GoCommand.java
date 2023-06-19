@@ -34,6 +34,9 @@ public class GoCommand extends Command
 
         Room nextRoom = game.getPlayer().getCurrentRoom().getExit(direction);
 
+
+
+
         if (nextRoom == null) {
             System.out.println("这个方向没有房间!");
         }
@@ -76,4 +79,7 @@ public class GoCommand extends Command
 
         return false;
     }
+
+
 }
+

@@ -103,6 +103,7 @@ public class Game
         office.setExit("west", lab);
         office.setExit("east",exit);
 
+
         teleport.setExit("east",lab);
 
         //初始化房间的物品
@@ -202,6 +203,8 @@ public class Game
     /**
      * 设置游戏失败
      */
+
+
     public void setFail(){
         this.isFail = true;
     }
@@ -214,7 +217,6 @@ public class Game
         return rooms;
     }
 
-
     public boolean getWin() {
         return isWin;
     }
@@ -222,5 +224,6 @@ public class Game
     public boolean getFail() {
         return isFail;
     }
+
 
 }
