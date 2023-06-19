@@ -10,7 +10,7 @@
  *
  * @author zhj
  * @version 1.0
-*/
+ */
 
 package cn.edu.whut.sept.zuul;
 
@@ -105,6 +105,7 @@ public class Room
      *
      * @return items 返回物品列表
      */
+
     public List<Item> getRoomItems() {return items;}
 
     public int getItemsWeight() {
@@ -145,7 +146,6 @@ public class Room
     public HashMap<String, Monster> getMonsters() {
         return monsters;
     }
-
 
 }
 

@@ -11,6 +11,7 @@ public class ItemsCommand extends Command {
 
         // 打印当前房间内的物品及总重量
         System.out.println("当前房间拥有物品:");
+
         printItems(currentRoom.getRoomItems());
         System.out.println("物品总重量为: " + getTotalWeight(currentRoom.getRoomItems()));
 

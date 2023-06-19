@@ -32,7 +32,6 @@ public class CommandWords
         commands.put("items", new ItemsCommand());
         commands.put("eat", new EatCommand());
 
-
     }
     /**
      * 获取指定命令词汇对应的命令对象
