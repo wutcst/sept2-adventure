@@ -20,25 +20,23 @@ public class TakeCommand extends Command {
 
             List<Item> roomItems = currentRoom.getRoomItems();
 
-            if(itemToTake.equals("all")){
+            if (itemToTake.equals("all")) {
                 if (roomItems.isEmpty()) {
                     System.out.println("房间内没有该物品。");
                     return false;
                 }
                 ArrayList<Item> itemsToTake = new ArrayList<>(roomItems);
                 for (Item roomItem : itemsToTake) {
-                    if(player.getCurrentLoad()+roomItem.getWeight()> player.getCarryingCapacity()){
-                        System.out.println(roomItem.getName()+"过重，已超出负重上限。");
-                    }
-                    else{
-                        currentRoom.removeItem(roomItem);
-                        player.addItem(roomItem);
+                    if (player.getCurrentLoad() + roomItem.getWeight() > player.getCarryingCapacity()) {
+                        System.out.println(roomItem.getName() + "过重，已超出负重上限。");
+                    } else {
+                        currentRoom.removeItem(roomItem);  // 从房间中移除物品
+                        player.addItem(roomItem);           // 将物品添加到玩家的物品列表中
                         System.out.println("你拾取了物品：" + roomItem.getName());
                     }
                 }
-                System.out.println("你当前负重："+player.getCurrentLoad());
-            }
-            else{
+                System.out.println("你当前负重：" + player.getCurrentLoad());
+            } else {
                 Item item = null;
                 for (Item roomItem : roomItems) {
                     if (roomItem.getName().equalsIgnoreCase(itemToTake)) {
@@ -52,7 +50,7 @@ public class TakeCommand extends Command {
                     return false;
                 }
 
-                if (player.getCurrentLoad()+item.getWeight() > player.getCarryingCapacity()) {
+                if (player.getCurrentLoad() + item.getWeight() > player.getCarryingCapacity()) {
                     System.out.println("物品太重，无法携带。");
                     return false;
                 }
@@ -61,9 +59,8 @@ public class TakeCommand extends Command {
                 currentRoom.removeItem(item);
                 player.addItem(item);
                 System.out.println("你拾取了物品：" + item.getName());
-                System.out.println("你当前负重："+player.getCurrentLoad());
+                System.out.println("你当前负重：" + player.getCurrentLoad());
             }
-
         }
 
         return false;

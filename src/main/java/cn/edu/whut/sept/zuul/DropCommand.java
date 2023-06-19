@@ -2,6 +2,7 @@ package cn.edu.whut.sept.zuul;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class DropCommand extends Command {
 
     @Override
@@ -26,13 +27,12 @@ public class DropCommand extends Command {
                 }
                 ArrayList<Item> itemsToDrop = new ArrayList<>(playerItems);
                 for (Item playerItem : itemsToDrop) {
-                    currentRoom.addItem(playerItem);
-                    player.removeItem(playerItem);
+                    currentRoom.addItem(playerItem);  // 将物品添加到当前房间的物品列表中
+                    player.removeItem(playerItem);    // 从玩家的物品列表中移除物品
                     System.out.println("你丢弃了物品：" + playerItem.getName());
                 }
-                System.out.println("你当前负重："+player.getCurrentLoad());
-            }
-            else{
+                System.out.println("你当前负重：" + player.getCurrentLoad());
+            } else {
                 Item item = null;
                 for (Item playerItem : playerItems) {
                     if (playerItem.getName().equalsIgnoreCase(itemToDrop)) {
@@ -50,7 +50,7 @@ public class DropCommand extends Command {
                 player.removeItem(item);
                 currentRoom.addItem(item);
                 System.out.println("你丢弃了物品：" + item.getName());
-                System.out.println("你当前负重："+player.getCurrentLoad());
+                System.out.println("你当前负重：" + player.getCurrentLoad());
             }
 
         }
