@@ -18,7 +18,8 @@ public class ItemsCommand extends Command {
         System.out.println("玩家携带物品:");
         printItems(player.getItems());
         System.out.println("总重量为： " + getTotalWeight(player.getItems()));
-
+        // 显示玩家当前负重能力
+        player.displayLoad();
         return false;
     }
 
