@@ -6,6 +6,7 @@
  */
 
 package cn.edu.whut.sept.zuul;
+
 public class Item {
     private String name; // 物品名称
     private String description; // 物品描述

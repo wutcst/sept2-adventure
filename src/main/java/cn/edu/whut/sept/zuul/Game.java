@@ -214,4 +214,13 @@ public class Game
         return rooms;
     }
 
+
+    public boolean getWin() {
+        return isWin;
+    }
+
+    public boolean getFail() {
+        return isFail;
+    }
+
 }
