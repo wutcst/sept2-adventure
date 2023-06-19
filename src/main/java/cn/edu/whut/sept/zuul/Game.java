@@ -53,15 +53,15 @@ public class Game
         Room outside, theater, pub, lab, office,exit;
 
         // 创建怪物
-        Monster monsterCommonA=new Monster(6,3,0);
-        Monster monsterCommonB=new Monster(6,3,0);
-        Monster monsterBOOS=new Monster(20,5,0);
+        Monster monsterCommonA=new Monster("普通怪物",6,3,0);
+        Monster monsterCommonB=new Monster("普通怪物",6,3,0);
+        Monster monsterBOOS=new Monster("精英怪物",20,5,0);
 
         // 创建物品
-        Item Sword=new Item("长剑","一般的文字冒险游戏可用不上这个...",3);
-        Item armor=new Item("铠甲","你无坚不摧啦！",4);
-        Item key=new Item("钥匙","一把钥匙，猜猜它能打开哪儿？",1);
-        Item stone=new Item("石头","这只是一块普通的石头",1);
+        Item Sword=new Item("长剑","一般的文字冒险游戏可用不上这个...",3,false);
+        Item armor=new Item("铠甲","你无坚不摧啦！",4,false);
+        Item key=new Item("钥匙","一把钥匙，猜猜它能打开哪儿？",1,false);
+        Item stone=new Item("石头","这只是一块普通的石头",1,false);
 
 
         // 创建房间对象

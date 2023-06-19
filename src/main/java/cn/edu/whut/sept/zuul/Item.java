@@ -11,6 +11,8 @@ public class Item {
     private String description; // 物品描述
     private int weight; // 物品重量
 
+    private boolean canEat; // 物品是否可食用
+
     /**
      * 构造函数
      *
@@ -18,10 +20,11 @@ public class Item {
      * @param description 物品描述
      * @param weight      物品重量
      */
-    public Item(String name, String description, int weight) {
+    public Item(String name, String description, int weight,boolean canEat) {
         this.name = name;
         this.description = description;
         this.weight = weight;
+        this.canEat = canEat;
     }
 
     /**
@@ -52,4 +55,12 @@ public class Item {
         return weight;
     }
 
+    /**
+     * 获取物品是否可食用
+     *
+     * @return 是否可食用
+     */
+    public boolean getcanEat() {
+        return canEat;
+    }
 }

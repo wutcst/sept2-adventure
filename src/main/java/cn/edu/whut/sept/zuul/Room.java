@@ -105,8 +105,14 @@ public class Room
      *
      * @return items 返回物品列表
      */
-    public List<Item> getItems() {
-        return items;
+    public List<Item> getRoomItems() {return items;}
+
+    public int getItemsWeight() {
+        int weight=0;
+        for (Item item : items) {
+            weight+=item.getWeight();
+        }
+        return weight;
     }
 
     /**
@@ -139,8 +145,6 @@ public class Room
     public HashMap<String, Monster> getMonsters() {
         return monsters;
     }
-
-
 
 
 }
