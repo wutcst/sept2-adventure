@@ -1,0 +1,26 @@
+name: SpotBugs
+
+on:
+  push:
+    branches:
+      - main  # 主分支
+  pull_request:
+    branches:
+      - main  # 主分支
+
+jobs:
+  spotbugs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Run SpotBugs
+        run: |
+          ./gradlew spotbugsMain --stacktrace  
