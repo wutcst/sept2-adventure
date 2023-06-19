@@ -173,4 +173,11 @@ public class Game
         this.isFail = true;
     }
 
+    public boolean getWin() {
+        return isWin;
+    }
+
+    public boolean getFail() {
+        return isFail;
+    }
 }
