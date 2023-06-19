@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class LookCommnd extends Command {
+public class LookCommand extends Command {
         public boolean execute(Game game) {
             Room currentRoom = game.getPlayer().getCurrentRoom();
 
@@ -36,8 +36,6 @@ public class LookCommnd extends Command {
                 }
             }
 
-            System.out.println("");
-            game.getPlayer().display();
 
             return false;
     }

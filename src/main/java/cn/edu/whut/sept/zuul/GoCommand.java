@@ -9,7 +9,10 @@
 
 package cn.edu.whut.sept.zuul;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
+
 public class GoCommand extends Command
 {
     /**
@@ -52,6 +55,15 @@ public class GoCommand extends Command
                     game.setWin();
                     System.out.println("你找到了传送门，逃离了这个混乱的区域");
                     return true;
+                }
+                if (nextRoom.getTeleportRooms()) {
+                    System.out.println("你进入了一个随机传送房间!");
+
+                    // 随机选择目标房间
+                    ArrayList<Room> teleportRooms = game.getRooms();
+                    Random random = new Random();
+                    int randomIndex = random.nextInt(teleportRooms.size());
+                    nextRoom = teleportRooms.get(randomIndex);
                 }
                 game.getPlayer().enterRoom(nextRoom);
                 System.out.println(nextRoom.getDescription());
