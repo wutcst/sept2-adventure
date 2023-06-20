@@ -128,11 +128,10 @@ public class Room
      * 房间内移除怪物
      *
      * @param direction 怪物所在位置
-     * @param monster  怪物
      */
-    public void removeMonster(String direction, Monster monster)
+    public void removeMonster(String direction)
     {
-        monsters.remove(direction,monster);
+        monsters.remove(direction);
     }
 
     /**

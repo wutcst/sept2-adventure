@@ -46,6 +46,7 @@ public class GoCommand extends Command {
                         System.out.println("你被怪物击败，濒临死亡！");
                         return true;
                     }
+                    currentRoom.removeMonster(direction);
                     System.out.println("你获得了胜利！");
                     System.out.println();
                 }
