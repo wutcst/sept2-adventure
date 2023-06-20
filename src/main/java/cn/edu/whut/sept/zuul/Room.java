@@ -19,6 +19,9 @@ import java.util.Set;
 import java.util.List;
 import java.util.HashMap;
 
+
+
+
 public class Room
 {
     private String description;     // 房间描述
@@ -142,6 +145,26 @@ public class Room
      */
     public HashMap<String, Monster> getMonsters() {
         return monsters;
+    }
+    /**
+     * 设置房间是否为随机传送房间
+     *
+     * @param isTeleportRooms 随机传送标识
+     */
+    public void setTeleportRooms(boolean isTeleportRooms)
+    {
+        this.isTeleportRooms = isTeleportRooms;
+        System.out.println("设置成功！");
+    }
+
+    /**
+     * 获取房间的随机传送标识符
+     *
+     * @return  isTeleportRooms 随机传送标识
+     */
+    public boolean getTeleportRooms()
+    {
+        return isTeleportRooms;
     }
 
     /**
