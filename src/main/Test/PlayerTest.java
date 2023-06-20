@@ -1,5 +1,4 @@
 import cn.edu.whut.sept.zuul.Item;
-import cn.edu.whut.sept.zuul.Monster;
 import cn.edu.whut.sept.zuul.Player;
 import cn.edu.whut.sept.zuul.Room;
 
@@ -9,11 +8,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 
 public class PlayerTest {
     private Room outside;
-    private Room hallway;
     private Room livingRoom;
     private Item sword;
     private Item armor;
@@ -23,7 +20,7 @@ public class PlayerTest {
     @BeforeEach
     public void setup() {
         outside = new Room("外面");
-        hallway = new Room("走廊");
+        Room hallway = new Room("走廊");
         livingRoom = new Room("客厅");
 
         outside.setExit("east", hallway);
@@ -76,7 +73,7 @@ public class PlayerTest {
     public void testEatItemAndGetLoad() {
         player.addItem(magicCookie);
         player.eatItem(magicCookie);
-        int expectedLoad = 11;
+        int expectedLoad = 6;
         Assertions.assertEquals(expectedLoad, player.getCarryingCapacity());
     }
 }

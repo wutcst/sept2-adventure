@@ -171,7 +171,6 @@ public class Room
     public void setTeleportRooms(boolean isTeleportRooms)
     {
         this.isTeleportRooms = isTeleportRooms;
-        System.out.println("设置成功！");
     }
 
     /**

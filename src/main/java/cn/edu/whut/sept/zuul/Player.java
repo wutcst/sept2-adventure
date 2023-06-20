@@ -82,7 +82,7 @@ public class Player {
      * @return 玩家当前所在的房间
      */
     public Room getCurrentRoom() {
-        return new Room(currentRoom);
+        return currentRoom;
     }
 
     /**
@@ -90,7 +90,7 @@ public class Player {
      * @param currentRoom 玩家当前所在的房间
      */
     public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = new Room(currentRoom);
+        this.currentRoom = currentRoom;
     }
 
     /**
@@ -99,7 +99,7 @@ public class Player {
      */
     public void enterRoom(Room room) {
         roomStack.push(currentRoom);
-        currentRoom = new Room(room);
+        currentRoom = room;
     }
 
     /**
