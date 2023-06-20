@@ -82,8 +82,7 @@ public class Player {
      * @return 玩家当前所在的房间
      */
     public Room getCurrentRoom() {
-        Room copy = new Room(currentRoom);
-        return copy;
+        return new Room(currentRoom);
     }
 
     /**
@@ -278,6 +277,7 @@ public class Player {
             System.out.println("你无法食用 " + item.getName() + ".");
         }
     }
+
 
 }
 

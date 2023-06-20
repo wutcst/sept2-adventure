@@ -16,8 +16,8 @@ import java.util.Scanner;
 
 public class Parser
 {
-    private CommandWords commands;  // 命令词汇表
-    private Scanner reader;         // source of command input
+    private final CommandWords commands;  // 命令词汇表
+    private final Scanner reader;         // source of command input
 
     /**
      * 创建命令解析器对象
@@ -25,7 +25,7 @@ public class Parser
     public Parser()
     {
         commands = new CommandWords();
-        reader = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));;
+        reader = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));
         //reader = new Scanner(System.in);
     }
 
@@ -61,9 +61,5 @@ public class Parser
         return command;
     }
 
-    public void showCommands()
-    {
-        commands.showAll();
-    }
 }
 

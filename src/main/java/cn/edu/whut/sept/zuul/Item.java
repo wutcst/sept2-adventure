@@ -8,11 +8,11 @@
 package cn.edu.whut.sept.zuul;
 
 public class Item {
-    private String name; // 物品名称
-    private String description; // 物品描述
-    private int weight; // 物品重量
+    private final String name; // 物品名称
+    private final String description; // 物品描述
+    private final int weight; // 物品重量
 
-    private boolean canEat; // 物品是否可食用
+    private final boolean canEat; // 物品是否可食用
 
     /**
      * 构造函数
@@ -64,4 +64,5 @@ public class Item {
     public boolean getcanEat() {
         return canEat;
     }
+
 }

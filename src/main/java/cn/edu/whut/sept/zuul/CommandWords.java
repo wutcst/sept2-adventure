@@ -9,19 +9,18 @@
 package cn.edu.whut.sept.zuul;
 
 import java.util.HashMap;
-import java.util.Iterator;
 /**
  * 表示游戏中的所有命令词汇
  */
 public class CommandWords
 {
-    private HashMap<String, Command> commands;
+    private final HashMap<String, Command> commands;
     /**
      * 创建CommandWords对象并初始化命令词汇表
      */
     public CommandWords()
     {
-        commands = new HashMap<String, Command>();
+        commands = new HashMap<>();
         commands.put("go", new GoCommand());
         commands.put("help", new HelpCommand(this));
         commands.put("quit", new QuitCommand());
@@ -41,16 +40,15 @@ public class CommandWords
      */
     public Command get(String word)
     {
-        return (Command)commands.get(word);
+        return commands.get(word);
     }
     /**
      * 显示所有命令词汇
      */
     public void showAll()
     {
-        for(Iterator i = commands.keySet().iterator(); i.hasNext(); ) {
-            System.out.print(i.next() + "  ");
-        }
+        for (String s : commands.keySet()) System.out.print(s + "  ");
         System.out.println();
     }
+
 }

@@ -10,7 +10,7 @@ package cn.edu.whut.sept.zuul;
 public class HelpCommand extends Command
 {
 
-    private CommandWords commandWords;
+    private final CommandWords commandWords;
 
     /**
      * 创建“帮助”命令对象
@@ -37,4 +37,5 @@ public class HelpCommand extends Command
         commandWords.showAll();
         return false;
     }
+
 }

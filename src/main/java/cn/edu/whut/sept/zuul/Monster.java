@@ -4,8 +4,8 @@ public class Monster {
 
     private String name; // 怪物名称
     private int health;  // 血量
-    private int attack;  // 攻击力
-    private int defense; // 防御力
+    private final int attack;  // 攻击力
+    private final int defense; // 防御力
 
     /**
      * 构造函数，创建怪物实例
@@ -85,6 +85,7 @@ public class Monster {
         }
         System.out.print(this.name + "-当前血量：" + health);
     }
+
 
 }
 

@@ -25,11 +25,10 @@ import java.util.ArrayList;
  */
 public class Game
 {
-    private Parser parser;// 命令解析器
-    private Player link; //游戏玩家
+    private final Parser parser;// 命令解析器
     private boolean isWin;//游戏胜利标识符
     private boolean isFail;//游戏失败标识符
-    private ArrayList<Room> rooms; // 房间列表,主要用于随机传送功能
+    private final ArrayList<Room> rooms; // 房间列表,主要用于随机传送功能
     /**
      * 创建游戏对象并初始化房间和解析器
      */
@@ -125,7 +124,8 @@ public class Game
         office.addMonster("east",monsterBOOS);
 
         // 创建玩家
-        link=Player.getPlayer();
+        //游戏玩家
+        Player link = Player.getPlayer();
 
         //设置初始房间
         link.setCurrentRoom(outside);
@@ -209,14 +209,5 @@ public class Game
     public ArrayList<Room> getRooms(){
         return new ArrayList<>(rooms);
     }
-
-    public boolean getWin() {
-        return isWin;
-    }
-
-    public boolean getFail() {
-        return isFail;
-    }
-
 
 }

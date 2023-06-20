@@ -80,5 +80,6 @@ public class GoCommand extends Command {
         return random.nextInt(size);
     }
 
+
 }
 

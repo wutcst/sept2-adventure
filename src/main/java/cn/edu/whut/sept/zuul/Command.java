@@ -54,4 +54,5 @@ public abstract class Command
      * @return 如果命令执行完毕返回true，否则返回false
      */
     public abstract boolean execute(Game game);
+
 }

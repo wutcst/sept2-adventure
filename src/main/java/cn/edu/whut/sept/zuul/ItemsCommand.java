@@ -37,4 +37,5 @@ public class ItemsCommand extends Command {
         }
         return totalWeight;
     }
+
 }

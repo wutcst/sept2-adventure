@@ -25,4 +25,5 @@ public class QuitCommand extends Command
             return true;  // signal that we want to quit
         }
     }
+
 }

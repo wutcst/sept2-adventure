@@ -24,10 +24,10 @@ import java.util.HashMap;
 
 public class Room
 {
-    private String description;     // 房间描述
-    private HashMap<String, Room> exits;        // 出口信息.
-    private List<Item> items;       // 物件列表
-    private HashMap<String, Monster> monsters;     // 怪物列表
+    private final String description;     // 房间描述
+    private final HashMap<String, Room> exits;        // 出口信息.
+    private final List<Item> items;       // 物件列表
+    private final HashMap<String, Monster> monsters;     // 怪物列表
     private boolean isTeleportRooms;    //是否为随机传送房间标识符
 
     /**
@@ -85,9 +85,10 @@ public class Room
      */
     private String getExitString()
     {
-        String returnString = "出口:";
+        String returnString;
         Set<String> keys = exits.keySet();
         StringBuilder sb = new StringBuilder();
+        sb.append("出口:");
         for (String exit : keys) {
             sb.append(" ").append(exit);
         }
@@ -132,8 +133,7 @@ public class Room
      */
 
     public List<Item> getRoomItems() {
-        List<Item> copy = new ArrayList<>(items);
-        return copy;
+        return new ArrayList<>(items);
     }
 
     /**
@@ -186,6 +186,7 @@ public class Room
     {
         return isTeleportRooms;
     }
+
 
 }
 
