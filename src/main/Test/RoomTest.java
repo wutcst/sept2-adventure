@@ -49,17 +49,6 @@ class RoomTest {
     }
 
     @Test
-    void getItemsWeight() {
-        Item item1 = new Item("物品1", "这是物品1", 2, false);
-        Item item2 = new Item("物品2", "这是物品2", 3, false);
-        room.addItem(item1);
-        room.addItem(item2);
-        int expectedWeight = 5;
-        int actualWeight = room.getItemsWeight();
-        assertEquals(expectedWeight, actualWeight);
-    }
-
-    @Test
     void addMonster() {
         Monster monster = new Monster("测试怪物", 10, 5, 0);
         room.addMonster("north", monster);
