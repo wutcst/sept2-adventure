@@ -65,7 +65,7 @@ public class Game
         // 创建物品
         Item Sword=new Item("长剑","一般的文字冒险游戏可用不上这个...",3,false);
         Item armor=new Item("铠甲","你无坚不摧啦！",4,false);
-        Item key=new Item("钥匙","一把钥匙，猜猜它能打开哪儿？",1,false);
+        //Item key=new Item("钥匙","一把钥匙，猜猜它能打开哪儿？",1,false);
         Item stone=new Item("石头","这只是一块普通的石头。",1,false);
         Item apple=new Item("苹果","这苹果看上去味道不错。",1,true);
         Item magicCookie=new Item("魔法饼干","这块饼干似乎能改善你的体质。",1,true);
@@ -115,6 +115,7 @@ public class Game
         outside.addItem(stone);
 
         theater.addItem(Sword);
+        theater.addItem(magicCookie);
         //theater.addItem(key);
 
         pub.addItem(stone);
@@ -214,7 +215,7 @@ public class Game
      * @return rooms
      */
     public ArrayList<Room> getRooms(){
-        return rooms;
+        return new ArrayList<>(rooms);
     }
 
     public boolean getWin() {
