@@ -164,8 +164,9 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("欢迎来到 World of Zuul!");
-        System.out.println("World of Zuul 是一款全新的、令人难以置信的无聊冒险游戏。");
+        System.out.println("欢迎来到 Adventure Game!");
+        System.out.println("某一天怪物突然降临，你几经挣扎终于跑出了到校外。");
+        System.out.println("但校外浓雾四起，危机重重，唯有返回学校，杀死怪物,找到传送门，才能脱离危险......");
         System.out.println("如果需要帮助，请键入“help”。");
         System.out.println();
         System.out.println(Player.getPlayer().getCurrentRoom().getDescription());

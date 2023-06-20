@@ -48,7 +48,7 @@ public class Player {
         newInstance.health = 10;
         newInstance.attack = 2;
         newInstance.defense = 0;
-        newInstance.setCarryingCapacity(10);
+        newInstance.setCarryingCapacity(5);
         newInstance.setCurrentLoad(0);
         newInstance.roomStack = new Stack<>();
         newInstance.items = new ArrayList<>();
@@ -197,8 +197,8 @@ public class Player {
         while(getPlayer().health>0 && monster.getHealth()>0){
             int playerDamage = Math.max(0, monster.getAttack() - getPlayer().getDefense());
             int monsterDamage = Math.max(0, getPlayer().getAttack() - monster.getDefense());
-            getPlayer().setHealth(getPlayer().getHealth()-monsterDamage);
-            monster.setHealth(monster.getHealth()-playerDamage);
+            getPlayer().setHealth(getPlayer().getHealth()-playerDamage);
+            monster.setHealth(monster.getHealth()-monsterDamage);
             getPlayer().displayHealth();
             monster.displayHealth();
             System.out.println();
@@ -268,10 +268,14 @@ public class Player {
             if(item.getName().equals("魔法饼干")){
                 this.carryingCapacity+=1;
                 System.out.println("你的负重上限+1 ！");
+                System.out.println("你当前的负重上限："+carryingCapacity);
+
             }
             if(item.getName().equals("苹果")){
                 this.health=Math.min(health+5,10);     //生命上限为10
                 System.out.println("你的血量+5 ！");
+                System.out.println("你当前的血量："+this.health);
+
             }
         } else {
             System.out.println("你无法食用 " + item.getName() + ".");

@@ -19,9 +19,6 @@ import java.util.Set;
 import java.util.List;
 import java.util.HashMap;
 
-
-
-
 public class Room
 {
     private final String description;     // 房间描述
