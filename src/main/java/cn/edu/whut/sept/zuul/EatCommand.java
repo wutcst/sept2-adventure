@@ -9,7 +9,7 @@ public class EatCommand extends Command {
         String secondWord = getSecondWord();
 
         if (secondWord == null) {
-            System.out.println("Eat what?");
+            System.out.println("吃什么?");
         } else {
             List<Item> playerItems = player.getPlayerItems();
             Item item = null;
@@ -23,7 +23,7 @@ public class EatCommand extends Command {
             if (item != null) {
                 player.eatItem(item);
             } else {
-                System.out.println("You don't have a " + secondWord + ".");
+                System.out.println("你没有 " + secondWord + ".");
             }
         }
 

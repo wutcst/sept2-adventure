@@ -5,6 +5,7 @@
  * @version 1.1
  */
 package cn.edu.whut.sept.zuul;
+
 import java.util.ArrayList;
 import java.util.Stack;
 import java.util.List;
@@ -79,6 +80,7 @@ public class Player {
 
     /**
      * 获取玩家当前所在的房间
+     * 注意：外部代码不应直接修改返回的列表，而应使用提供的方法进行修改。
      * @return 玩家当前所在的房间
      */
     public Room getCurrentRoom() {
@@ -89,6 +91,7 @@ public class Player {
      * 设置玩家当前所在的房间
      * @param currentRoom 玩家当前所在的房间
      */
+    //@SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "不在此方法中修改外部传入的可变对象")
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
@@ -281,7 +284,6 @@ public class Player {
             System.out.println("你无法食用 " + item.getName() + ".");
         }
     }
-
 
 }
 
