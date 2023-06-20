@@ -4,8 +4,7 @@ public class BackCommand extends Command {
 
     @Override
     public boolean execute(Game game) {
-        if(Player.getPlayer()!=null)
-        {
+        if (Player.getPlayer() != null) {
             Player.getPlayer().goBack();
         }
         return false;

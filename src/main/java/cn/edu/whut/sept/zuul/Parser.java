@@ -10,6 +10,8 @@
 package cn.edu.whut.sept.zuul;
 
 
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Parser
@@ -23,7 +25,8 @@ public class Parser
     public Parser()
     {
         commands = new CommandWords();
-        reader = new Scanner(System.in);
+        reader = new Scanner(new InputStreamReader(System.in, StandardCharsets.UTF_8));;
+        //reader = new Scanner(System.in);
     }
 
     /**
@@ -43,16 +46,16 @@ public class Parser
 
         // 将输入拆分为单词
         Scanner tokenizer = new Scanner(inputLine);
-        if(tokenizer.hasNext()) {
+        if (tokenizer.hasNext()) {
             word1 = tokenizer.next();      // 获取第一个单词
-            if(tokenizer.hasNext()) {
+            if (tokenizer.hasNext()) {
                 word2 = tokenizer.next();      // 获取第二个单词
             }
         }
 
         // 根据命令词汇表创建对应的命令对象
         Command command = commands.get(word1);
-        if(command != null) {
+        if (command != null) {
             command.setSecondWord(word2);
         }
         return command;
