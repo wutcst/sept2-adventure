@@ -31,6 +31,19 @@ public class Room
     private boolean isTeleportRooms;    //是否为随机传送房间标识符
 
     /**
+     * 拷贝复制函数
+     *
+     * @param other 使用另一个房间类来创建房间副本
+     */
+    public Room(Room other) {
+        this.description = other.description;
+        this.exits = new HashMap<>(other.exits);
+        this.items = new ArrayList<>(other.items);
+        this.monsters = new HashMap<>(other.monsters);
+        this.isTeleportRooms = other.isTeleportRooms;
+    }
+
+    /**
      * 创建一个新房间
      *
      * @param description 房间描述
@@ -74,7 +87,11 @@ public class Room
     {
         String returnString = "出口:";
         Set<String> keys = exits.keySet();
-        for(String exit : keys) returnString += " " + exit;
+        StringBuilder sb = new StringBuilder();
+        for (String exit : keys) {
+            sb.append(" ").append(exit);
+        }
+        returnString = sb.toString();
         return returnString;
     }
 
@@ -114,7 +131,10 @@ public class Room
      * @return items 返回物品列表
      */
 
-    public List<Item> getRoomItems() {return items;}
+    public List<Item> getRoomItems() {
+        List<Item> copy = new ArrayList<>(items);
+        return copy;
+    }
 
     /**
      * 房间内添加怪物，并设置怪物位置
@@ -131,11 +151,10 @@ public class Room
      * 房间内移除怪物
      *
      * @param direction 怪物所在位置
-     * @param monster  怪物
      */
-    public void removeMonster(String direction, Monster monster)
+    public void removeMonster(String direction)
     {
-        monsters.remove(direction,monster);
+        monsters.remove(direction);
     }
 
     /**
@@ -144,27 +163,7 @@ public class Room
      * @return monsters 返回怪物列表
      */
     public HashMap<String, Monster> getMonsters() {
-        return monsters;
-    }
-    /**
-     * 设置房间是否为随机传送房间
-     *
-     * @param isTeleportRooms 随机传送标识
-     */
-    public void setTeleportRooms(boolean isTeleportRooms)
-    {
-        this.isTeleportRooms = isTeleportRooms;
-        System.out.println("设置成功！");
-    }
-
-    /**
-     * 获取房间的随机传送标识符
-     *
-     * @return  isTeleportRooms 随机传送标识
-     */
-    public boolean getTeleportRooms()
-    {
-        return isTeleportRooms;
+        return new HashMap<>(monsters);
     }
 
     /**

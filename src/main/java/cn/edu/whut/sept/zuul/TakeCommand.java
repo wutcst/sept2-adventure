@@ -7,8 +7,8 @@ public class TakeCommand extends Command {
 
     @Override
     public boolean execute(Game game) {
-        if (game.getPlayer() != null) {
-            Player player = game.getPlayer();
+        if (Player.getPlayer() != null) {
+            Player player = Player.getPlayer();
             Room currentRoom = player.getCurrentRoom();
 
             if (!hasSecondWord()) {

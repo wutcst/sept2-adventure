@@ -5,7 +5,7 @@ import java.util.List;
 public class EatCommand extends Command {
     @Override
     public boolean execute(Game game) {
-        Player player = game.getPlayer();
+        Player player = Player.getPlayer();
         String secondWord = getSecondWord();
 
         if (secondWord == null) {

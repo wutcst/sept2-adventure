@@ -60,7 +60,7 @@ class RoomTest {
     void removeMonster() {
         Monster monster = new Monster("测试怪物", 10, 5, 0);
         room.addMonster("north", monster);
-        room.removeMonster("north", monster);
+        room.removeMonster("north");
         assertFalse(room.getMonsters().containsKey("north"));
         assertNull(room.getMonsters().get("north"));
     }

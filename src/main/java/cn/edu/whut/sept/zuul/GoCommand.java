@@ -27,28 +27,25 @@ public class GoCommand extends Command {
         }
 
         String direction = getSecondWord();
-        Room currentRoom = game.getPlayer().getCurrentRoom();
+        Room currentRoom = Player.getPlayer().getCurrentRoom();
 
-
-        Room nextRoom = game.getPlayer().getCurrentRoom().getExit(direction);
-
-
-
+        Room nextRoom = Player.getPlayer().getCurrentRoom().getExit(direction);
 
         if (nextRoom == null) {
             System.out.println("这个方向没有房间!");
         }
         else {
-            if (game.getPlayer() != null)
+            if (Player.getPlayer() != null)
             {
                 HashMap<String, Monster> monsters = currentRoom.getMonsters();
                 if (monsters.get(direction) != null){
-                    boolean flag = game.getPlayer().fight(monsters.get(direction));
+                    boolean flag = Player.getPlayer().fight(monsters.get(direction));
                     if (!flag){
                         game.setFail();
                         System.out.println("你被怪物击败，濒临死亡！");
                         return true;
                     }
+                    currentRoom.removeMonster(direction);
                     System.out.println("你获得了胜利！");
                     System.out.println();
                 }
@@ -66,7 +63,7 @@ public class GoCommand extends Command {
                     int randomIndex = getRandomIndex(random, teleportRooms.size());
                     nextRoom = teleportRooms.get(randomIndex);
                 }
-                game.getPlayer().enterRoom(nextRoom);
+                Player.getPlayer().enterRoom(nextRoom);
                 System.out.println(nextRoom.getDescription());
             }
             else

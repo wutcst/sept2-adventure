@@ -1,4 +1,3 @@
-package Test;
 import cn.edu.whut.sept.zuul.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
