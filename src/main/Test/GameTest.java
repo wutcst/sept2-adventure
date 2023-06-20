@@ -15,7 +15,7 @@ class GameTest {
 
     @Test
     void getPlayer() {
-        Player player = game.getPlayer();
+        Player player = Player.getPlayer();
         assertNotNull(player);
     }
 

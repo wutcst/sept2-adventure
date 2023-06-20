@@ -10,7 +10,7 @@ import java.util.Stack;
 import java.util.List;
 
 public class Player {
-    private static Player player; // 单例实例
+    //private static Player player; // 单例实例
     private String name; // 玩家姓名
     private int health;  // 血量
     private int attack;  // 攻击力
@@ -21,25 +21,38 @@ public class Player {
     private int currentLoad; // 玩家当前负重
     private List<Item> items; // 玩家携带的物品列表
 
+
+    /**
+     * 静态内部类
+     */
+    private static class PlayerHolder {
+        private static final Player INSTANCE = createPlayerInstance();
+    }
     /**
      * 获取Player类的单例实例
      *
      * @return Player类的单例实例
      */
     public static Player getPlayer() {
-        if (player == null) {
-            player = new Player();
-            player.setName("link");
-            player.health=10;
-            player.attack=2;
-            player.defense=0;
-            player.setCarryingCapacity(10);
-            player.setCurrentLoad(0);
-            player.roomStack = new Stack<>();
-            player.items = new ArrayList<>();
+        return PlayerHolder.INSTANCE;
+    }
 
-        }
-        return player;
+    /**
+     * 初始化player的属性
+     *
+     * @return Player类的单例实例
+     */
+    private static Player createPlayerInstance() {
+        Player newInstance = new Player();
+        newInstance.setName("link");
+        newInstance.health = 10;
+        newInstance.attack = 2;
+        newInstance.defense = 0;
+        newInstance.setCarryingCapacity(10);
+        newInstance.setCurrentLoad(0);
+        newInstance.roomStack = new Stack<>();
+        newInstance.items = new ArrayList<>();
+        return newInstance;
     }
 
     /**
@@ -69,7 +82,8 @@ public class Player {
      * @return 玩家当前所在的房间
      */
     public Room getCurrentRoom() {
-        return currentRoom;
+        Room copy = new Room(currentRoom);
+        return copy;
     }
 
     /**
@@ -77,7 +91,7 @@ public class Player {
      * @param currentRoom 玩家当前所在的房间
      */
     public void setCurrentRoom(Room currentRoom) {
-        this.currentRoom = currentRoom;
+        this.currentRoom = new Room(currentRoom);
     }
 
     /**
@@ -86,14 +100,14 @@ public class Player {
      */
     public void enterRoom(Room room) {
         roomStack.push(currentRoom);
-        currentRoom = room;
+        currentRoom = new Room(room);
     }
 
     /**
      * 回到上一个房间
      */
     // 回到上一个房间
-    public boolean goBack() {
+    public void goBack() {
         if(roomStack.empty()){
             System.out.println("你已经回到了起点！");
         }
@@ -101,7 +115,6 @@ public class Player {
             currentRoom = roomStack.pop();
             System.out.println(currentRoom.getDescription());
         }
-        return false;
     }
 
     /**
@@ -141,7 +154,7 @@ public class Player {
      * @return 玩家携带的物品列表
      */
     public List<Item> getPlayerItems() {
-        return items;
+        return new ArrayList<>(items);
     }
 
     /**
@@ -182,19 +195,29 @@ public class Player {
         System.out.println("你与怪物发生了交战！！！");
         display();
         monster.display();
-        while(player.health>0 && monster.getHealth()>0){
-            player.health-= monster.getAttack()-player.defense;
-            monster.setHealth(monster.getHealth()-player.attack+ monster.getDefense());
-            player.displayHealth();
+        while(getPlayer().health>0 && monster.getHealth()>0){
+            int playerDamage = Math.max(0, monster.getAttack() - getPlayer().getDefense());
+            int monsterDamage = Math.max(0, getPlayer().getAttack() - monster.getDefense());
+            getPlayer().setHealth(getPlayer().getHealth()-monsterDamage);
+            monster.setHealth(monster.getHealth()-playerDamage);
+            getPlayer().displayHealth();
             monster.displayHealth();
             System.out.println();
         }
-        return player.health>0;
+        return getPlayer().health>0;
+    }
+
+    /**
+     * 设置玩家血量
+     * @param  health 玩家血量
+     */
+    private void setHealth(int health) {
+        this.health=health;
     }
 
     /**
      * 获取玩家血量
-     * @return 玩家血量
+     * @return health 玩家血量
      */
     public int getHealth() {
         return health;
@@ -231,7 +254,7 @@ public class Player {
      *
      * @return items 返回物品列表
      */
-    public List<Item> getItems() {return items;}
+    public List<Item> getItems() {return new ArrayList<>(items);}
 
     /**
      * 玩家食用物品
@@ -248,7 +271,7 @@ public class Player {
                 System.out.println("你的负重上限+1 ！");
             }
             if(item.getName().equals("苹果")){
-                this.health=this.health+5>10?10:this.health+5;     //生命上限为10
+                this.health=Math.min(health+5,10);     //生命上限为10
                 System.out.println("你的血量+5 ！");
             }
         } else {

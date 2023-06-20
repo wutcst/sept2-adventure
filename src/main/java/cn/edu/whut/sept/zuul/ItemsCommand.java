@@ -6,8 +6,8 @@ public class ItemsCommand extends Command {
     @Override
     public boolean execute(Game game) {
         // 获取当前房间和玩家对象
-        Room currentRoom = game.getPlayer().getCurrentRoom();
-        Player player = game.getPlayer();
+        Room currentRoom = Player.getPlayer().getCurrentRoom();
+        Player player = Player.getPlayer();
 
         // 打印当前房间内的物品及总重量
         System.out.println("当前房间拥有物品:");

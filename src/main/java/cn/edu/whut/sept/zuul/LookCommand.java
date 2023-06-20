@@ -1,13 +1,12 @@
 package cn.edu.whut.sept.zuul;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public class LookCommand extends Command {
         public boolean execute(Game game) {
-            Room currentRoom = game.getPlayer().getCurrentRoom();
+            Room currentRoom = Player.getPlayer().getCurrentRoom();
 
             // 显示当前房间的描述
             System.out.println(currentRoom.getDescription());
@@ -22,7 +21,7 @@ public class LookCommand extends Command {
                     System.out.println(item.getName() + "- " + item.getDescription() + "  重量：" + item.getWeight());
                 }
             }
-            System.out.println("");
+            System.out.println();
             //显示怪物信息
             HashMap<String, Monster> monsters=currentRoom.getMonsters();
             if (monsters.isEmpty()) {
