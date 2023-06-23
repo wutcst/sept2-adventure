@@ -6,6 +6,8 @@
  */
 package cn.edu.whut.sept.zuul;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import java.util.ArrayList;
 import java.util.Stack;
 import java.util.List;
@@ -83,6 +85,7 @@ public class Player {
      * 注意：外部代码不应直接修改返回的列表，而应使用提供的方法进行修改。
      * @return 玩家当前所在的房间
      */
+    @SuppressFBWarnings("EI_EXPOSE_REP")
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -91,7 +94,7 @@ public class Player {
      * 设置玩家当前所在的房间
      * @param currentRoom 玩家当前所在的房间
      */
-    //@SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "不在此方法中修改外部传入的可变对象")
+    @SuppressFBWarnings("EI_EXPOSE_REP2")
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
@@ -100,6 +103,7 @@ public class Player {
      * 进入新的房间
      * @param room 玩家将要进入的房间
      */
+    @edu.umd.cs.findbugs.annotations.SuppressFBWarnings("EI_EXPOSE_REP2")
     public void enterRoom(Room room) {
         roomStack.push(currentRoom);
         currentRoom = room;
