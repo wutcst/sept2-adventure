@@ -22,8 +22,8 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build --continue
-        working-directory: ./sept2-adventure  # 替换为你的项目根目录
+        working-directory: jetbrains://idea/navigate/reference?project=sept2-adventure&path=~\Desktop\sept2-adventure  # 替换为你的项目根目录
 
       - name: Run SpotBugs
         run: ./gradlew spotbugsMain --continue
-        working-directory: ./sept2-adventure  # 替换为你的项目根目录
+        working-directory: jetbrains://idea/navigate/reference?project=sept2-adventure&path=~\Desktop\sept2-adventure  # 替换为你的项目根目录
